@@ -20,9 +20,10 @@ In the background a python3 based simple http server is started on
 port `8080` that then servers the contents of the created files
 as `JSON` over `HTTP`.
 
-The container periodically (5s) will requery the BBSIM instances and
-their SADIS and Bandwidth Profiles. The files in `/data` will then
-be updated or deleted based on the currently discovered entries.
+The container periodically (default 5s) will requery the BBSIM
+instances and their SADIS and Bandwidth Profiles. The files in
+`/data` will then be updated or deleted based on the currently
+discovered entries.
 
 ## Configuration
 The important configuration aspect of this container is the credentials
@@ -32,7 +33,7 @@ is accomplished using a Kubernetes configuration map (`configmap`).
 The `configmap` can be created from an existing `kubectl` configuration
 file using the following command:
 ```
-kubectl create configmap kube-config --from-file=$KUBECONFIG
+kubectl create configmap kube-config --from-file=kube_config=$KUBECONFIG
 ```
 This command creates a `configmap` named `kube-config` from the
 existing configuration file specified by the environment variable
@@ -56,6 +57,11 @@ To create the container you can use the following command:
 ```
 kubectl create -f bbsim-sadis-server.yaml
 ```
+Within the `bbsim-sadis-service.yaml` file the time the container
+_sleeps_ between repeating its query and processing can be configured
+as an environment variable against the container. The value of
+`SLEEP_TIME` can be set as duration string, i.e. `1d4h24m15s`.
+The default is `5s`.
 
 ## ONOS Integration using kind-voltha
 In order to use the BBSIM SADIS and Bandwidth Profile container

@@ -35,6 +35,9 @@ spec:
     - name: server
       image: dbainbriciena/test
       command: [ "/app/serve" ]
+      env:
+      - name: SLEEP_TIME
+        value: 5s
       volumeMounts:
       - name: kube-config-volume
         mountPath: /etc/kube
