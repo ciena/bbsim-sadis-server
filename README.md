@@ -20,7 +20,9 @@ In the background a python3 based simple http server is started on
 port `8080` that then servers the contents of the created files
 as `JSON` over `HTTP`.
 
-The container
+The container periodically (5s) will requery the BBSIM instances and
+their SADIS and Bandwidth Profiles. The files in `/data` will then
+be updated or deleted based on the currently discovered entries.
 
 ## Configuration
 The important configuration aspect of this container is the credentials
