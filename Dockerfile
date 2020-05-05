@@ -34,3 +34,4 @@ RUN curl -sSL "https://storage.googleapis.com/kubernetes-release/release/$(curl 
 COPY ./serve.sh /app/serve
 RUN chmod 755 /usr/local/bin/kubectl /app/serve
 ENV KUBECONFIG=/etc/kube/kube_config
+WORKDIR /data
