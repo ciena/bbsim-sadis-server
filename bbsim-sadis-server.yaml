@@ -33,14 +33,14 @@ metadata:
 spec:
   containers:
     - name: server
-      image: dbainbriciena/test
-      command: [ "/app/serve" ]
+      image: ciena/bbsim-sadis-server:master
+      command: ["/app/serve"]
       env:
-      - name: SLEEP_TIME
-        value: 5s
+        - name: SLEEP_TIME
+          value: 5s
       volumeMounts:
-      - name: kube-config-volume
-        mountPath: /etc/kube
+        - name: kube-config-volume
+          mountPath: /etc/kube
   volumes:
     - name: kube-config-volume
       configMap:
