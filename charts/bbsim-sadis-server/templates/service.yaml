@@ -23,28 +23,3 @@ spec:
       targetPort: 8080
   selector:
     app: bbsim-sadis-server
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: bbsim-sadis-server
-  labels:
-    app: bbsim-sadis-server
-spec:
-  containers:
-    - name: server
-      image: dbainbriciena/test
-      command: [ "/app/serve" ]
-      env:
-      - name: SLEEP_TIME
-        value: 5s
-      volumeMounts:
-      - name: kube-config-volume
-        mountPath: /etc/kube
-  volumes:
-    - name: kube-config-volume
-      configMap:
-        # Provide the name of the ConfigMap containing the files you want
-        # to add to the container
-        name: kube-config
-  restartPolicy: Never
