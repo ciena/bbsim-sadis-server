@@ -1,4 +1,5 @@
 #!/bin/ash
+# shellcheck shell=ash
 # Copyright 2020 Ciena Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-trap "echo 'exiting on trap'; exit" SIGHUP SIGINT SIGTERM
+trap "echo 'exiting on trap'; exit" HUP INT TERM
 
 parseDuration() {
     local DUR RESULT TERMS VALUE UNIT
@@ -47,7 +48,7 @@ python3 -m http.server 8080 >/tmp/http.log 2>&1 &
 
 while true; do
     echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) UPDATES"
-    INSTANCES=$(/usr/local/bin/kubectl -s https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT get -l app=bbsim --all-namespaces svc -o json | jq -r '.items[].metadata | .name+"."+.namespace+".svc:50074"')
+    INSTANCES=$(/usr/local/bin/kubectl -s "https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT" get -l app=bbsim --all-namespaces svc -o json | jq -r '.items[].metadata | .name+"."+.namespace+".svc:50074"')
     rm -rf /tmp/raw-subscribers /tmp/raw-profiles
     touch /tmp/raw-subscribers /tmp/raw-profiles
     for INST in $INSTANCES; do
@@ -110,7 +111,7 @@ while true; do
         fi
     done
 
-    echo "    SUMMARY: $(ls -1 "$DATA_DIR/subscribers" | wc -l)/+$SUB_ADD_COUNT/-$SUB_DEL_COUNT SUSCRIBER RECORD(s), $(ls -1 "$DATA_DIR/profiles" | wc -l)/+$PRO_ADD_COUNT/-$PRO_DEL_COUNT PROFILE RECORD(s)"
+    echo "    SUMMARY: $(find "$DATA_DIR/subscribers" -type f -not -name "\.*" | wc -l)/+$SUB_ADD_COUNT/-$SUB_DEL_COUNT SUSCRIBER RECORD(s), $(find "$DATA_DIR/profiles" -type f -not -name "\.*" | wc -l)/+$PRO_ADD_COUNT/-$PRO_DEL_COUNT PROFILE RECORD(s)"
     echo "====="
     sleep "$SLEEP_TIME_SECONDS"
 done

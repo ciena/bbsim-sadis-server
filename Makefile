@@ -78,9 +78,14 @@ docker-push:
 
 ## lint and unit tests
 
+SHELL_FILES := serve.sh
+lint-shell: ## check shell scripts with shellcheck
+	shellcheck --version
+	shellcheck $(SHELL_FILES)
+
 lint-dockerfile:
 	@echo "Running Dockerfile lint check..."
 	@${HADOLINT} $$(find . -name "Dockerfile")
 	@echo "Dockerfile lint check OK"
 
-lint: lint-dockerfile
+lint: lint-shell lint-dockerfile
