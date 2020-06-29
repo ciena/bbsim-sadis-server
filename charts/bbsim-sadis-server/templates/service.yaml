@@ -12,14 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-apiVersion: v1
-kind: Service
+apiVersion: "v1"
+kind: "Service"
 metadata:
-  name: bbsim-sadis-server
+  name: "bbsim-sadis-server"
+  namespace: {{ .Release.Namespace | quote }}
 spec:
   ports:
-    - name: http
+    - name: "http"
       port: 58080
       targetPort: 8080
   selector:
-    app: bbsim-sadis-server
+    app: "bbsim-sadis-server"
+    release: {{ .Release.Name | quote }}

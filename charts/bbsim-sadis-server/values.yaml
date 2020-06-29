@@ -1,4 +1,3 @@
----
 # Copyright 2020-present Ciena Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+---
 defaults:
   image_registry: ""
   image_tag: ~
   image_org: "ciena/"
   image_pullPolicy: "Always"
 
-replicas:
-  bbsim_sadis_server: 1
+replicas: 1
 
 images:
   bbsim_sadis_server:

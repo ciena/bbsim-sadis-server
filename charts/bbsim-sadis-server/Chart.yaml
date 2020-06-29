@@ -1,4 +1,3 @@
----
 # Copyright 2020-present Ciena Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +11,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+---
+apiVersion: "v1"
+name: "bbsim-sadis-server"
+version: "1.0.1"
+description: "A Helm chart for Voltha's BBSIM SADIS Server"
+keywords:
+  - "onf"
+  - "voltha"
+  - "bbsim"
+  - "sadis"
+home: "https://www.opennetworking.org/voltha"
+icon: "https://guide.opencord.org/logos/voltha.svg"
+sources:
+  - "https://github.com/ciena/bbsim-sadis-server"
+maintainers:
+  - name: "Ciena Corporation"
+    email: "info@ciena.com"
+    url: "https://www.ciena.com"
 
-name: bbsim-sadis-server
-description: A Helm chart for Voltha's BBSIM SADIS Server
-icon: https://guide.opencord.org/logos/voltha.svg
-
-version: 1.0.0
+appVersion: "1.2"
