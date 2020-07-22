@@ -29,7 +29,7 @@ LABEL org.label-schema.schema-version=1.0 \
       org.opencord.vcs-commit-date=$org_opencord_vcs_commit_date \
       org.opencord.vcs-dirty=$org_opencord_vcs_dirty
 
-RUN apk add --no-cache jq=1.6-r0 curl=7.64.0-r3 python3=3.6.9-r2
+RUN apk add --no-cache jq=1.6-r0 curl=7.64.0-r3 python3=3.6.9-r3
 RUN curl -sSL "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl
 COPY ./serve.sh /app/serve
 RUN chmod 755 /usr/local/bin/kubectl /app/serve
