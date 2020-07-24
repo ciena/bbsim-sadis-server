@@ -48,7 +48,7 @@ python3 -m http.server 8080 >/tmp/http.log 2>&1 &
 
 while true; do
     echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) UPDATES"
-    INSTANCES=$(/usr/local/bin/kubectl -s "https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT" get -l app=bbsim --all-namespaces svc -o json | jq -r '.items[].metadata | .name+"."+.namespace+".svc:50074"')
+    INSTANCES=$(/usr/local/bin/kubectl --kubeconfig /dev/null get -l app=bbsim --all-namespaces svc -o json | jq -r '.items[].metadata | .name+"."+.namespace+".svc:50074"')
     rm -rf /tmp/raw-subscribers /tmp/raw-profiles
     touch /tmp/raw-subscribers /tmp/raw-profiles
     for INST in $INSTANCES; do
