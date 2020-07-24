@@ -27,6 +27,8 @@ images:
     tag: '{{- if hasKey .Values.defaults "image_tag" }}{{- if .Values.defaults.image_tag }}{{ .Values.defaults.image_tag }}{{- else }}latest{{- end }}{{- else }}latest{{- end }}'
     pullPolicy: '{{ .Values.defaults.image_pullPolicy }}'
 
+serviceAccountName: ~
+
 config:
   bbsim_sadis_server:
     sleep_time: 5s
