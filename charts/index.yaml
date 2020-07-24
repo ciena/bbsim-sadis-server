@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   bbsim-sadis-server:
   - apiVersion: v1
+    appVersion: "1.1"
+    created: "2020-07-24T00:51:34.225463111Z"
+    description: A Helm chart for Voltha's BBSIM SADIS Server
+    digest: 62291fbdba4b57184bbf39da93e8d6a143d3d9efc1271d90e3a4bdbc1a73e52a
+    home: https://www.opennetworking.org/voltha
+    icon: https://guide.opencord.org/logos/voltha.svg
+    keywords:
+    - onf
+    - voltha
+    - bbsim
+    - sadis
+    maintainers:
+    - email: info@ciena.com
+      name: Ciena Corporation
+      url: https://www.ciena.com
+    name: bbsim-sadis-server
+    sources:
+    - https://github.com/ciena/bbsim-sadis-server
+    urls:
+    - bbsim-sadis-server-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v1
     appVersion: "1.2"
-    created: "2020-06-29T08:38:31.15574-07:00"
+    created: "2020-07-24T00:51:34.224769516Z"
     description: A Helm chart for Voltha's BBSIM SADIS Server
     digest: 5abcfc98c6be9a753763f92767542fee7f3443e121c48b317042c516cce43d1d
     home: https://www.opennetworking.org/voltha
@@ -23,7 +45,8 @@ entries:
     urls:
     - bbsim-sadis-server-1.0.1.tgz
     version: 1.0.1
-  - created: "2020-06-29T08:38:31.155296-07:00"
+  - apiVersion: v1
+    created: "2020-07-24T00:51:34.223869491Z"
     description: A Helm chart for Voltha's BBSIM SADIS Server
     digest: 80235c6056e2100408026c7fe4f3a2715277b244487bf8a78830f83d856d6925
     icon: https://guide.opencord.org/logos/voltha.svg
@@ -31,4 +54,4 @@ entries:
     urls:
     - bbsim-sadis-server-1.0.0.tgz
     version: 1.0.0
-generated: "2020-06-29T08:38:31.154373-07:00"
+generated: "2020-07-24T00:51:34.223456183Z"
